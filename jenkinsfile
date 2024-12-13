@@ -3,9 +3,10 @@ pipeline {
 
     environment {
         CHECKMARX_CREDENTIALS_ID = 'CxSast'
-        CHECKMARX_PASSWORD = 'Admin@123456'
-        CHECKMARX_PROJECT_NAME = 'demo-amol'
-        CHECKMARX_SERVER_URL = 'https://cxprivatecloud.checkmarx.net'
+        CHECKMARX_USERNAME = credentials('CxUser')
+        CHECKMARX_PASSWORD = credentials('CxPass')
+        CHECKMARX_PROJECT_NAME = credentials('CxProject')
+        CHECKMARX_SERVER_URL = credentials('CxServer')
     }
 
     stages {
@@ -66,7 +67,7 @@ pipeline {
                         sastEnabled: true,
                         serverUrl: env.CHECKMARX_SERVER_URL,
                         sourceEncoding: '1',
-                        username: 'RahulPidde',
+                        username: env.CHECKMARX_USERNAME,
                         vulnerabilityThresholdResult: 'FAILURE',
                         waitForResultsEnabled: true
                     ])
