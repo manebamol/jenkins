@@ -28,7 +28,6 @@ pipeline {
                 ])
             }
         }
-
         // stage('Checkmarx SAST Scan') {
         //     steps {
         //         script {
